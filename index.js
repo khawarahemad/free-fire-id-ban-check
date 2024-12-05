@@ -13,7 +13,7 @@ const bot = new Client({
 // Replace these with your IDs
 const SERVER_ID = '1304550156154441879'; // Your server ID
 const APPLICATION_ID = '1314248837086580737'; // Your bot's application ID
-const TOKEN = 'MTMxNDI0ODgzNzA4NjU4MDczNw.GKmEBq.KT2oFYy8CPMup3zDjZUE--7kLNKsjUtyMlGsZI'; // Your bot token
+const TOKEN = 'token'; // Your bot token
 
 // Slash Command Setup
 const commands = [
