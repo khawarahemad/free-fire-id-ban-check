@@ -27,7 +27,7 @@ A simple tool designed to check the ban status of Free Fire player IDs. This pro
    ```bash
    cd free-fire-id-ban-check
    ```
-3. Replace these with your IDs in index.js
+3. Replace these with your IDs in **index.js**
 
  - const SERVER_ID = '1304550156154441879'; // Your server ID.
  - const APPLICATION_ID = '1314248837086580737'; // Your bot's application ID.
