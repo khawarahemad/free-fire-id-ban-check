@@ -91,19 +91,24 @@ bot.on('interactionCreate', async (interaction) => {
     };
 
     try {
+      await interaction.deferReply();
       const response = await fetch(apiUrl, { headers });
       if (response.ok) {
         const data = await response.json();
         if (data.banned) {
-          await interaction.reply(`The UID \`${uid}\` is **banned** in the \`${region}\` region.`);
+          await interaction.editReply(`The UID \`${uid}\` is **banned** in the \`${region}\` region.`);
         } else {
-          await interaction.reply(`The UID \`${uid}\` is **not banned** in the \`${region}\` region.`);
+          await interaction.editReply(`The UID \`${uid}\` is **not banned** in the \`${region}\` region.`);
         }
       } else {
-        await interaction.reply('Error: Unable to fetch data from the API. Please try again later.');
+        await interaction.editReply('Error: Unable to fetch data from the API. Please try again later.');
       }
     } catch (error) {
-      await interaction.reply(`An error occurred: ${error.message}`);
+      try {
+        await interaction.editReply(`An error occurred: ${error.message}`);
+      } catch (replyError) {
+        console.error('Failed to send error reply:', replyError);
+      }
     }
   }
 });
