@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
 import fetch from 'node-fetch';
 
@@ -10,10 +11,17 @@ const bot = new Client({
   ],
 });
 
-// Replace these with your IDs
-const SERVER_ID = '1304550156154441879'; // Your server ID
-const APPLICATION_ID = '1314248837086580737'; // Your bot's application ID
-const TOKEN = 'token'; // Your bot token
+// Retrieve environment variables
+const SERVER_ID = process.env.SERVER_ID;
+const APPLICATION_ID = process.env.APPLICATION_ID;
+const TOKEN = process.env.DISCORD_TOKEN;
+
+// Validate environment variables
+if (!SERVER_ID || !APPLICATION_ID || !TOKEN) {
+  console.error('Error: SERVER_ID, APPLICATION_ID, and DISCORD_TOKEN must be defined in the .env file.');
+  process.exit(1);
+}
+
 
 // Slash Command Setup
 const commands = [
